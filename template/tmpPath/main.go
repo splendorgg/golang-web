@@ -13,7 +13,7 @@ func main() {
 	// func (t *Template) ParseFiles(filenames ...string) (*Template, error)
 	// tpl, _ = tpl.ParseFiles("index1.html")
 	http.HandleFunc("/", indexHandler)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe("", nil)
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
