@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/htmx.org@1.9.11"
+        integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0"
+        crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>Film list</h1>
+        <form >
+        <ul id="film-list">
+            {{range .Films}}
+            {{block "film-list-element" .}}
+            <li class="list-group-item">{{.Title}}- {{.Director}}
+                <button hx-delete="/delete">Delete</button>
+            </li>
+            {{end}}
+            {{end}}
+        </ul>
+    </form>
+    </div>
+    <div>
+        <h1>Add Films</h1>
+        <form hx-post="/add-film" hx-target="#film-list" hx-swap="beforeend" >
+            <div>
+                <label for="film-title">Title</label>
+                <input type="text" placeholder="Film Name" name="title" id="film-title" class="form-control" value="id">
+            </div>
+            <div>
+                <label for="film-director">Director</label>
+                <input type="text" placeholder="Director Name" name="director" id="film-director" class="form-control">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+       
+
+        
+    </div>
+</body>
+
+</html>
